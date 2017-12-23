@@ -1,9 +1,9 @@
 # trello-dependencies
-Configure Trello dependencies to generate a dependency graph using UML for HowGoesItApp.com
+Configure Trello card dependencies, generate UML, paste to yuml.me to generate a dependency graph.
 
 # Usage
 
-1. Export json from Trello, save it as trello.json
+1. Export json from Trello board, save it as trello.json
 2. Copy config.example.php to config.php and edit as desired
 3. Access index.php, configure dependencies, hit submit
 4. Expect data.json to be created where dependencies are stored.
