@@ -145,6 +145,16 @@ function treat_card_name( $string ) {
 	return $string;
 }
 
+function config_value( $key = 'empty' ) {
+	global $config;
+
+	if ( isset( $config[ $key ] ) ) {
+		return $config[ $key ];
+	}
+
+	return $config;
+}
+
 function generate_form() {
 	if ( $_POST['dependencies'] ) {
 		save_dependencies( $_POST['dependencies'] );
