@@ -9,3 +9,7 @@ Configure Trello card dependencies, generate UML, paste to yuml.me to generate a
 4. Expect data.json to be created where dependencies are stored.
 5. Copy generated UML from textarea at the top of the page rendered by index.php
 6. Paste into yuml.me
+
+# Example
+
+![trello-card-dependencies](https://user-images.githubusercontent.com/173229/34322494-81c8c4ec-e7f6-11e7-8689-fe98669bfe71.jpg)
