@@ -132,9 +132,8 @@ function generate_uml_markup( $dependencies, $cards ) {
 	}
 
 	$return_str = implode( ', ', $return_str_a );
-	print $return_str;
-	return;
-	printf( '<textarea>%s</textarea>', $return_str );
+	print '<h2>Copy the following to paste to yuml.me.</h2>';
+	printf( '<textarea cols="80" rows="20">%s</textarea>', $return_str );
 }
 
 function treat_card_name( $string ) {
