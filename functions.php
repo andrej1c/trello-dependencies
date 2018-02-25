@@ -5,6 +5,12 @@ function load_json() {
 	return $json_obj;
 }
 
+/*
+ * Return lists
+ *
+ * @param $json_object JSON Object from trello
+ * @return array $lists associative array of list_id => list_name
+ */
 function get_lists( $json_object ) {
 	/*
 	params of lists
@@ -24,6 +30,49 @@ function get_lists( $json_object ) {
 	return $lists;
 }
 
+/**
+ * Get list colors
+ *
+ * @param $lists array Associative array of list_id => list_name
+ * @return $list_colors Associative array of list_id => list_color
+ */
+function get_colors( $lists ) {
+	$colors = array(
+		'yellowgreen',
+		'yellow',
+		'wheat',
+		'violet',
+		'turquoise',
+		'tomato',
+		'thistle',
+		'tan',
+		'steelblue',
+		'springgreen',
+		'slategray',
+		'slateblue',
+		'skyblue',
+		'sienna',
+		'seashell',
+		'seagreen',
+		'sandybrown',
+		'salmon',
+		'saddlebrown',
+		'royalblue',
+		'rosybrown',
+		'red',
+		'purple',
+		'powderblue',
+		'plum',
+		'pink',
+	);
+	$list_colors = [];
+	$color_index = 0;
+	foreach ( array_keys( $lists ) as $list_id ) {
+		$list_colors[ $list_id ] = $colors[ $color_index++ ];
+	}
+	return $list_colors;
+}
+
 function get_cards() {
 	/*
 	params of cards
@@ -37,6 +86,7 @@ function get_cards() {
 
 	$cards = [];
 	$lists = get_lists( $json_object );
+	$list_colors = get_colors( $lists );
 	$list_ids = array_keys( $lists );
 
 	foreach ( $cards_a as $card ) {
@@ -46,7 +96,7 @@ function get_cards() {
 		if ( $card->closed ) {
 			continue;
 		}
-		$cards[ $card->id ] = $card->name;
+		$cards[ $card->id ] = sprintf( '%s {bg:%s}', $card->name, $list_colors[ $card->idList ] );
 	}
 	asort( $cards );
 	return $cards;
