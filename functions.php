@@ -146,6 +146,25 @@ function load_dependency( $dependencies, $card_id, $index ) {
 	return 0;
 }
 
+function generate_uml_legend_markup() {
+	$json_object = load_json();
+	$lists = get_lists( $json_object );
+	$list_colors = get_colors( $lists );
+	$list_ids = array_keys( $lists );
+	$colored_lists_a = [];
+	$i = 0;
+	foreach ( $lists as $list_id => $list_name ) {
+		$colored_lists_a[] = sprintf( '[%s {bg:%s}]', treat_card_name( $list_name ), $list_colors[ $list_id ] );
+	}
+	// Reverse sorting because that's how yuml.me generates the chart
+	krsort( $colored_lists_a );
+
+	$return_str = implode( ', ', $colored_lists_a );
+
+	print '<h2>Copy the following legend to paste to yuml.me.</h2>';
+	printf( '<textarea cols="80" rows="20">%s</textarea>', $return_str );
+}
+
 function generate_uml_markup( $dependencies, $cards ) {
 	$max_dependencies = config_value( 'max_dependencies' );
 	$dependency_pairs = [];
@@ -213,7 +232,7 @@ function generate_form() {
 
 	$cards = get_cards();
 
-
+	generate_uml_legend_markup();
 
 	generate_uml_markup( $saved_dependencies, $cards );
 
