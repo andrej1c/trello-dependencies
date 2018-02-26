@@ -14,6 +14,10 @@ Configure Trello card dependencies, generate UML, paste to yuml.me to generate a
 
 ![dependencies](https://user-images.githubusercontent.com/173229/36650084-5b6dee0c-1a6f-11e8-8c5c-0ff3da71359d.png)
 
+## Legend
+
+![columns](https://user-images.githubusercontent.com/173229/36650113-92f4127a-1a6f-11e8-8577-fb7b0708ff02.png)
+
 # "GUI"
 
 ![app-admin](https://user-images.githubusercontent.com/173229/34322504-c355a240-e7f6-11e7-9b0f-a6306f7f82a2.png)
