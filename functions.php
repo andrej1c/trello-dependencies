@@ -185,7 +185,10 @@ function generate_uml_markup( $dependencies, $cards ) {
 		}
 	}
 
-	$return_str_a = [ 'How Goes It Dependencies' ];
+	$project_name = config_value( 'project_name' );
+	if ( $project_name ) {
+		$return_str_a[] = $project_name;
+	}
 	foreach ( $dependency_pairs as $pair ) {
 		$return_str_a[] = sprintf( '[%s]->[%s]', treat_card_name( $cards[ $pair[1] ] ), treat_card_name( $cards[ $pair[0] ] ) );
 	}
