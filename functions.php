@@ -134,13 +134,13 @@ function load_dependencies() {
 	return $array_of_array;
 }
 
-function load_dependency( $dependencies, $card_id, $index ) {
+function load_dependency( $dependencies, $card_id, $requested_index ) {
 	if ( ! isset( $dependencies[ $card_id ] ) ) {
 		return 0;
 	}
-	foreach ( $dependencies[ $card_id ] as $key => $value ) {
-		if ( $key === (string) $index ) {
-			return $value;
+	foreach ( $dependencies[ $card_id ] as $index => $dependency ) {
+		if ( $index === $requested_index ) {
+			return $dependency;
 		}
 	}
 	return 0;
@@ -227,7 +227,7 @@ function config_value( $key = 'empty' ) {
 }
 
 function generate_form() {
-	if ( $_POST['dependencies'] ) {
+	if ( isset( $_POST['dependencies'] ) ) {
 		save_dependencies( $_POST['dependencies'] );
 	}
 
